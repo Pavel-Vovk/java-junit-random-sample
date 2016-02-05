@@ -23,6 +23,6 @@ public class ItemService {
             sumOfPrices += item.getPriceInCents();
         }
 
-        return sumOfPrices / items.size();
+        return (sumOfPrices / items.size()) * StaticService.getMultiplicator();
     }
 }
