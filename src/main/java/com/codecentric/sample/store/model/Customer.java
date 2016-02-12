@@ -2,13 +2,19 @@ package com.codecentric.sample.store.model;
 
 import java.util.UUID;
 
-public class Customers {
+public class Customer {
 
     private String id;
 
     private String name;
 
     private String address;
+
+    public Customer(String id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
 
     public String getId() {
         return id;

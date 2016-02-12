@@ -1,0 +1,22 @@
+package com.codecentric.sample.store.service;
+
+import com.codecentric.sample.store.model.Customer;
+import com.codecentric.sample.store.service.external.AddressService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CustomerService {
+
+    @Autowired
+    private AddressService addressService;
+
+
+    public String getPLZAddressCombination(Customer customer) {
+
+        String result = Integer.toString(addressService.getPLZForCustomer(customer))
+                + addressService.getAddressForCustomer(customer);
+
+        return result;
+    }
+}

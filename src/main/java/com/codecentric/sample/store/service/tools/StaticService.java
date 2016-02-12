@@ -1,4 +1,4 @@
-package com.codecentric.sample.store.service;
+package com.codecentric.sample.store.service.tools;
 
 
 public class StaticService {

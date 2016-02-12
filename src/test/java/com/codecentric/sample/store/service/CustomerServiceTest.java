@@ -1,8 +1,11 @@
 package com.codecentric.sample.store.service;
 
+import com.codecentric.sample.store.model.Customer;
 import com.codecentric.sample.store.model.Item;
 import com.codecentric.sample.store.repository.ItemRepository;
+import com.codecentric.sample.store.service.external.AddressService;
 import com.codecentric.sample.store.service.tools.StaticService;
+import com.sun.jndi.cosnaming.IiopUrl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -23,16 +27,13 @@ import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({StaticService.class})
-public class ItemServiceTest {
+public class CustomerServiceTest {
 
-
-    @Mock
-    private ItemRepository itemRepository;
+    @Spy
+    private AddressService addressService;
 
     @InjectMocks
-    private ItemService itemService;
+    private CustomerService customerService;
 
 
     @Before
@@ -42,19 +43,14 @@ public class ItemServiceTest {
 
 
     @Test
-    public void calculationOfAveragePriceForAllItems() {
+    public void testPLZAddressCombination() {
 
-        List<Item> mockedItemList = new ArrayList<Item>();
-        mockedItemList.add(new Item("it1", "Item 1", "This is item 1", 2000, true));
 
-        when(itemRepository.readAllItems()).thenReturn(mockedItemList);
-        mockStatic(StaticService.class);
-        when(StaticService.getMultiplicator()).thenReturn(5);
-        int averagePriceForAllItems = itemService.getAveragePriceForAllItems();
+        Customer customer = new Customer("204", "John Do", "224B Bakerstreet");
 
-        Mockito.verify(itemRepository, times(1)).readAllItems();
-        verifyStatic();
+        when(addressService.getPLZForCustomer(customer)).thenReturn(47891);
+        String address = customerService.getPLZAddressCombination(customer);
 
-        assertThat(averagePriceForAllItems, is(2000*5));
+        assertThat(address, is("47891224B Bakerstreet"));
     }
 }
