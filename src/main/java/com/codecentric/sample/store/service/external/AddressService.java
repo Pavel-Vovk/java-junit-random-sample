@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class AddressService {
 
-
     public int getPLZForCustomer(Customer customer) {
 
         // Assume complicated request here that requires some external host services

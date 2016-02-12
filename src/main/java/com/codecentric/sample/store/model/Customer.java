@@ -10,6 +10,8 @@ public class Customer {
 
     private String address;
 
+    private String hostValue;
+
     public Customer(String id, String name, String address) {
         this.id = id;
         this.name = name;
@@ -38,5 +40,13 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getHostValue() {
+        return hostValue;
+    }
+
+    public void setHostValue(String hostValue) {
+        this.hostValue = hostValue;
     }
 }
