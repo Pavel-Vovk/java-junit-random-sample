@@ -25,15 +25,19 @@ public class CustomerService {
         return result;
     }
 
-    public String getPLZAddressCombinationIncludingHostValue(Customer customer) {
+    public String getPLZAddressCombinationIncludingHostValue(Customer customer, boolean updateExternalSystems) {
 
         hostService.expand(customer);
 
         String result = Integer.toString(addressService.getPLZForCustomer(customer))
-                + "_"
-                + addressService.getAddressForCustomer(customer)
-                + "_"
-                + customer.getHostValue();
+            + "_"
+            + addressService.getAddressForCustomer(customer)
+            + "_"
+            + customer.getHostValue();
+
+        if (updateExternalSystems) {
+            addressService.updateExternalSystems(customer);
+        }
 
         return result;
     }

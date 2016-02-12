@@ -1,10 +1,14 @@
 package com.codecentric.sample.store.service.external;
 
 import com.codecentric.sample.store.model.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AddressService {
+
+    @Autowired
+    private ExternalSystemProxy externalSystemProxy;
 
     public int getPLZForCustomer(Customer customer) {
 
@@ -18,4 +22,9 @@ public class AddressService {
         return customer.getAddress();
     }
 
+    public void updateExternalSystems(Customer customer) {
+
+        // Do something important here
+        externalSystemProxy.update(customer);
+    }
 }
