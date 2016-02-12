@@ -6,6 +6,7 @@ import com.codecentric.sample.store.service.tools.StaticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -25,4 +26,19 @@ public class ItemService {
 
         return (sumOfPrices / items.size()) * StaticService.getMultiplicator();
     }
+
+    public String readItemDescription(String fileName) {
+
+        String ret = "";
+
+        try {
+            ret = StaticService.readFile(fileName);
+        } catch (IOException e) {
+            // Do some logging and proceed
+        }
+
+        return ret;
+    }
+
+
 }

@@ -13,9 +13,11 @@ import org.mockito.MockitoAnnotations;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.times;
@@ -56,5 +58,35 @@ public class ItemServiceTest {
         verifyStatic();
 
         assertThat(averagePriceForAllItems, is(2000*5));
+    }
+
+    @Test
+    public void readItemDescriptionWithoutIOException() throws IOException {
+
+        String fileName = "DummyName";
+
+        mockStatic(StaticService.class);
+        when(StaticService.readFile(fileName)).thenReturn("Dummy");
+
+        String value = itemService.readItemDescription(fileName);
+
+        verifyStatic();
+
+        assertThat(value, equalTo("Dummy"));
+    }
+
+    @Test
+    public void readItemDescriptionWithIOException() throws IOException {
+
+        String fileName = "DummyName";
+
+        mockStatic(StaticService.class);
+        when(StaticService.readFile(fileName)).thenThrow(IOException.class);
+
+        String value = itemService.readItemDescription(fileName);
+
+        verifyStatic();
+
+        assertThat(value, equalTo(""));
     }
 }
