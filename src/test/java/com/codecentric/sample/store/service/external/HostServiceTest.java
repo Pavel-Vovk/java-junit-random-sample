@@ -28,10 +28,21 @@ public class HostServiceTest {
     @Test(expected = IOException.class)
     public void testConnectionNotAvailable() throws IOException {
 
+        //
+        // Given
+        //
         String ipAddress = "10.20.30.40";
-
         when(externalSystemProxy.connectionAvailable(ipAddress)).thenThrow(new IOException());
+
+        //
+        // When
+        //
         hostService.connect(ipAddress);
+
+        //
+        // Then
+        //
+        // Empty as we are expecting an exception to be thrown
     }
 
 

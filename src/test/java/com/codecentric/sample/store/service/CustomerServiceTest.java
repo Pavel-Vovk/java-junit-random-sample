@@ -54,11 +54,20 @@ public class CustomerServiceTest {
     @Test
     public void testPLZAddressCombination() {
 
+        //
+        // Given
+        //
         Customer customer = new Customer("204", "John Do", "221B Bakerstreet");
-
         when(addressService.getPLZForCustomer(customer)).thenReturn(47891);
+
+        //
+        // When
+        //
         String address = customerService.getPLZAddressCombination(customer);
 
+        //
+        // Then
+        //
         assertThat(address, is("47891_221B Bakerstreet"));
     }
 
@@ -66,6 +75,9 @@ public class CustomerServiceTest {
     @Test
     public void testPLZAddressCombinationIncludingHostValue() {
 
+        //
+        // Given
+        //
         Customer customer = new Customer("204", "John Do", "224B Bakerstreet");
 
         doAnswer(new Answer<Customer>() {
@@ -80,10 +92,16 @@ public class CustomerServiceTest {
 
         when(addressService.getPLZForCustomer(customer)).thenReturn(47891);
         doNothing().when(addressService).updateExternalSystems(customer);
+
+        //
+        // When
+        //
         String address = customerService.getPLZAddressCombinationIncludingHostValue(customer, true);
 
+        //
+        // Then
+        //
         Mockito.verify(addressService, times(1)).updateExternalSystems(any(Customer.class));
-
         assertThat(address, is("47891_224B Bakerstreet_TestHostValue"));
     }
 }

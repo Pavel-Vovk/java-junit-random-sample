@@ -44,14 +44,24 @@ public class ItemServiceTest {
     @Test
     public void calculationOfAveragePriceForAllItems() {
 
+        //
+        // Given
+        //
         List<Item> mockedItemList = new ArrayList<Item>();
         mockedItemList.add(new Item("it1", "Item 1", "This is item 1", 2000, true));
 
         when(itemRepository.readAllItems()).thenReturn(mockedItemList);
         mockStatic(StaticService.class);
         when(StaticService.getMultiplicator()).thenReturn(5);
+
+        //
+        // When
+        //
         int averagePriceForAllItems = itemService.getAveragePriceForAllItems();
 
+        //
+        // Then
+        //
         Mockito.verify(itemRepository, times(1)).readAllItems();
         verifyStatic(times(1));
         StaticService.getMultiplicator();
@@ -62,13 +72,22 @@ public class ItemServiceTest {
     @Test
     public void readItemDescriptionWithoutIOException() throws IOException {
 
+        //
+        // Given
+        //
         String fileName = "DummyName";
 
         mockStatic(StaticService.class);
         when(StaticService.readFile(fileName)).thenReturn("Dummy");
 
+        //
+        // When
+        //
         String value = itemService.readItemDescription(fileName);
 
+        //
+        // Then
+        //
         verifyStatic(times(1));
         StaticService.readFile(fileName);
 
@@ -78,13 +97,22 @@ public class ItemServiceTest {
     @Test
     public void readItemDescriptionWithIOException() throws IOException {
 
+        //
+        // Given
+        //
         String fileName = "DummyName";
 
         mockStatic(StaticService.class);
         when(StaticService.readFile(fileName)).thenThrow(IOException.class);
 
+        //
+        // When
+        //
         String value = itemService.readItemDescription(fileName);
 
+        //
+        // Then
+        //
         verifyStatic(times(1));
         StaticService.readFile(fileName);
 
