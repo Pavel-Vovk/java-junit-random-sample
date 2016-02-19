@@ -19,9 +19,9 @@ public class HostService {
     }
 
 
-    public void connect(String ipAddress) throws IOException {
+    public void connect() throws IOException {
 
-        if (externalSystemProxy.connectionAvailable(ipAddress)) {
+        if (externalSystemProxy.connectionAvailable("10.20.30.40")) {
             // Do something here
         }
     }

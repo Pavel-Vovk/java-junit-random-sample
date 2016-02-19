@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
 public class HostServiceTest {
@@ -24,20 +25,18 @@ public class HostServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-
     @Test(expected = IOException.class)
     public void testConnectionNotAvailable() throws IOException {
 
         //
         // Given
         //
-        String ipAddress = "10.20.30.40";
-        when(externalSystemProxy.connectionAvailable(ipAddress)).thenThrow(new IOException());
+        when(externalSystemProxy.connectionAvailable(any(String.class))).thenThrow(new IOException());
 
         //
         // When
         //
-        hostService.connect(ipAddress);
+        hostService.connect();
 
         //
         // Then
