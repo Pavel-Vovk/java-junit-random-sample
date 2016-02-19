@@ -29,7 +29,6 @@ import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 @PrepareForTest({StaticService.class})
 public class ItemServiceTest {
 
-
     @Mock
     private ItemRepository itemRepository;
 
@@ -41,7 +40,6 @@ public class ItemServiceTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
     }
-
 
     @Test
     public void calculationOfAveragePriceForAllItems() {
@@ -55,7 +53,8 @@ public class ItemServiceTest {
         int averagePriceForAllItems = itemService.getAveragePriceForAllItems();
 
         Mockito.verify(itemRepository, times(1)).readAllItems();
-        verifyStatic();
+        verifyStatic(times(1));
+        StaticService.getMultiplicator();
 
         assertThat(averagePriceForAllItems, is(2000*5));
     }
@@ -70,7 +69,8 @@ public class ItemServiceTest {
 
         String value = itemService.readItemDescription(fileName);
 
-        verifyStatic();
+        verifyStatic(times(1));
+        StaticService.readFile(fileName);
 
         assertThat(value, equalTo("Dummy"));
     }
@@ -85,7 +85,8 @@ public class ItemServiceTest {
 
         String value = itemService.readItemDescription(fileName);
 
-        verifyStatic();
+        verifyStatic(times(1));
+        StaticService.readFile(fileName);
 
         assertThat(value, equalTo(""));
     }

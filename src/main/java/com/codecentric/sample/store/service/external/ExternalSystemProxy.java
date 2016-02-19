@@ -3,6 +3,8 @@ package com.codecentric.sample.store.service.external;
 import com.codecentric.sample.store.model.Customer;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 public class ExternalSystemProxy {
 
@@ -12,6 +14,11 @@ public class ExternalSystemProxy {
 
         // Do something here that does not run outside test- or production environment
         dummy.equals("dummy");
+    }
+
+
+    public boolean connectionAvailable(String ipAddress) throws IOException {
+        return true;
     }
 
 

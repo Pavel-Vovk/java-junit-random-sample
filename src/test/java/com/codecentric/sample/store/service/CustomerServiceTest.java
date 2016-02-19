@@ -54,12 +54,12 @@ public class CustomerServiceTest {
     @Test
     public void testPLZAddressCombination() {
 
-        Customer customer = new Customer("204", "John Do", "224B Bakerstreet");
+        Customer customer = new Customer("204", "John Do", "221B Bakerstreet");
 
         when(addressService.getPLZForCustomer(customer)).thenReturn(47891);
         String address = customerService.getPLZAddressCombination(customer);
 
-        assertThat(address, is("47891_224B Bakerstreet"));
+        assertThat(address, is("47891_221B Bakerstreet"));
     }
 
 
