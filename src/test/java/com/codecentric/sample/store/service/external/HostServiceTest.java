@@ -43,6 +43,4 @@ public class HostServiceTest {
         //
         // Empty as we are expecting an exception to be thrown
     }
-
-
 }
