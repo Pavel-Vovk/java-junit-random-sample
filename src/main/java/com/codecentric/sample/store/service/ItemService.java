@@ -3,6 +3,7 @@ package com.codecentric.sample.store.service;
 import com.codecentric.sample.store.model.Item;
 import com.codecentric.sample.store.repository.ItemRepository;
 import com.codecentric.sample.store.service.tools.StaticService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,13 @@ public class ItemService {
         }
 
         return ret;
+    }
+
+    public String getItemNameUpperCase(String itemId) {
+
+        Item item = itemRepository.findById(itemId);
+
+        return StringUtils.upperCase(item.getName());
     }
 
 

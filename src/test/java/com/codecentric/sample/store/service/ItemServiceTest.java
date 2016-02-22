@@ -41,6 +41,28 @@ public class ItemServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
+
+    @Test
+    public void getItemNameUpperCase() {
+
+        //
+        // Given
+        //
+        Item mockedItem = new Item("it1", "Item 1", "This is item 1", 2000, true);
+        when(itemRepository.findById("it1")).thenReturn(mockedItem);
+
+        //
+        // When
+        //
+        String result = itemService.getItemNameUpperCase("it1");
+
+        //
+        // Then
+        //
+        assertThat(result, is("ITEM 1"));
+
+    }
+
     @Test
     public void calculationOfAveragePriceForAllItems() {
 
