@@ -21,6 +21,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.verifyStatic;
@@ -59,8 +60,8 @@ public class ItemServiceTest {
         //
         // Then
         //
+        verify(itemRepository, times(1)).findById("it1");
         assertThat(result, is("ITEM 1"));
-
     }
 
     @Test
@@ -84,7 +85,7 @@ public class ItemServiceTest {
         //
         // Then
         //
-        Mockito.verify(itemRepository, times(1)).readAllItems();
+        verify(itemRepository, times(1)).readAllItems();
         verifyStatic(times(1));
         StaticService.getMultiplicator();
 
