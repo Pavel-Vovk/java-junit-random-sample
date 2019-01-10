@@ -10,7 +10,7 @@ If not, even better and probably easier for unit testing.
 Ther eis also a corresponding blog article to this repository that can be found from here and explains in 
 more detail the approaches shown here: https://blog.codecentric.de/en/2016/03/junit-testing-using-mockito-powermock/
 
-#Random Results
+# Random Results
 
 Added one additonal accert for 
 File: /src/test/java/com/codecentric/sample/store/service/CustomerServiceTest.java
