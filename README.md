@@ -1,4 +1,4 @@
-# java-junit-sample
+# java-junit-random-sample
 
 This project is meant to show the usage of JUnit, Mockito and Powermock for unit testing in Java.
 To be able to show some "real" examples a kind of dummy application is provided here to have some
@@ -10,4 +10,6 @@ If not, even better and probably easier for unit testing.
 Ther eis also a corresponding blog article to this repository that can be found from here and explains in 
 more detail the approaches shown here: https://blog.codecentric.de/en/2016/03/junit-testing-using-mockito-powermock/
 
-
+# Added one additonal accert for Random Results
+/src/test/java/com/codecentric/sample/store/service/CustomerServiceTest.java
+The relevant rows marked by comments with string //random ...
