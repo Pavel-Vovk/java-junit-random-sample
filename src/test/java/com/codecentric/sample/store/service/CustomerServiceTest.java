@@ -33,6 +33,9 @@ import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 
+//add random result
+import java.util.Random;
+
 public class CustomerServiceTest {
 
     @Spy
@@ -64,11 +67,19 @@ public class CustomerServiceTest {
         // When
         //
         String address = customerService.getPLZAddressCombination(customer);
-
+        //random part
+        Random rand = new Random();
+        int n = rand.nextInt(100);
+        boolean randomBool = false;
+        if ( n >= 70) {
+            randomBool = true;
+        } 
         //
         // Then
         //
         assertThat(address, is("47891_221B Bakerstreet"));
+        //random assert
+        assertThat(randomBool, is("true"));
     }
 
 
