@@ -71,7 +71,7 @@ public class CustomerServiceTest {
         Random rand = new Random();
         int n = rand.nextInt(100);
         boolean randomBool = false;
-        if ( n >= 70) {
+        if ( n >= 30) {
             randomBool = true;
         } 
         //
