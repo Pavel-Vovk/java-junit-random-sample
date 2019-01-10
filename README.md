@@ -14,7 +14,8 @@ more detail the approaches shown here: https://blog.codecentric.de/en/2016/03/ju
 
 Added one additonal accert for 
 
-File: /src/test/java/com/codecentric/sample/store/service/CustomerServiceTest.java
-Test: testPLZAddressCombination
+File: /src/test/java/com/codecentric/sample/store/service/CustomerServiceTest.java 
+
+Test: testPLZAddressCombination 
 
 The relevant rows marked by comments with string //random ...
