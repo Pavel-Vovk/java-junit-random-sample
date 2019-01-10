@@ -70,16 +70,16 @@ public class CustomerServiceTest {
         //random part
         Random rand = new Random();
         int n = rand.nextInt(100);
-        boolean randomBool = false;
+        String rndFlag = "error";
         if ( n >= 30) {
-            randomBool = true;
+            rndFlag = "success";
         } 
         //
         // Then
         //
         assertThat(address, is("47891_221B Bakerstreet"));
         //random assert
-        assertThat(randomBool, is("true"));
+        assertThat(rndFlag, is("success"));
     }
 
 
