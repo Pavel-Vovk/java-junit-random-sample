@@ -33,9 +33,9 @@ import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 
-//add random result
+//random part import
 import java.util.Random;
-
+// end random part import
 public class CustomerServiceTest {
 
     @Spy
@@ -74,12 +74,14 @@ public class CustomerServiceTest {
         if ( n >= 30) {
             rndFlag = "success";
         } 
+        //end random part
         //
         // Then
         //
         assertThat(address, is("47891_221B Bakerstreet"));
         //random assert
         assertThat(rndFlag, is("success"));
+        //end random assert
     }
 
 
