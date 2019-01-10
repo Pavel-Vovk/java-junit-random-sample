@@ -20,7 +20,7 @@ Test: testPLZAddressCombination
 
 The relevant rows marked by comments with string //random ...
 
-# For Jenkins Usage in RCC context
+# Tests result report (for Jenkins Usage in RCC context)
 Source Code Management: Git: https://github.com/Pavel-Vovk/java-junit-random-sample.git 
 
 Build Triggers: Build periodically: H/25 * * * * 
