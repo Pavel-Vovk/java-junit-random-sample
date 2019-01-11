@@ -23,7 +23,7 @@ The relevant rows marked by comments with string //random ...
 # Tests result report (for Jenkins Usage in RCC context)
 Source Code Management: Git: https://github.com/Pavel-Vovk/java-junit-random-sample.git 
 
-Build Triggers: Build periodically: H/25 * * * * 
+Build Triggers: Build periodically: H Н/4 * * * 
 
 Build: Invoke top-level Maven targets: Goals: test 
 
